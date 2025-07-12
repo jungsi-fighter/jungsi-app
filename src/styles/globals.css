@@ -1,0 +1,805 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom Scrollbar */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-thumb { background-color: rgba(100,100,100,0.5); border-radius: 4px; }
+@keyframes scroll {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-100%); }
+  }
+  .animate-scroll {
+    animation: scroll 15s linear infinite;
+  }
+  .delay-2s {
+    animation-delay: 6.5s;
+  }
+  @keyframes scroll-x {
+    0%   { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+  .animate-scroll-x {
+    animation: scroll-x 10s linear infinite;
+  }
+  @keyframes flicker {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.8; }
+  }
+  .animate-flicker {
+    animation: flicker 1.5s infinite;
+  }
+  /* styles/globals.css */
+/* 1) CSS 변수 선언 */
+/* 2) Body 기본 배경/글자 색 */
+
+
+/* 3) 불꽃 애니메이션 오버레이 */
+.flame-overlay {
+  position: fixed;
+  inset: 0;
+  background: url('https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExZjlxd3A4cDlvMzUxbTh6aDd3Z2R5ZWlvcWJuZzU5b3Y4ZHR2dW04dCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/q4voi8znbYANE5GtYI/giphy.gif') repeat-x; /* (1) 스프라이트 or GIF */
+  mix-blend-mode: screen;
+  opacity: 0.6;
+  animation: flame-move 1s steps(10) infinite;
+  pointer-events: none;
+  z-index: 0;
+}
+
+@keyframes flame-move {
+  from { background-position: 0 0; }
+  to   { background-position: -2000px 0; }
+}
+
+/* 4) 일반 섹션은 오버레이 위로 올라오도록 */
+section, header, footer, main {
+  position: relative;
+  z-index: 10;
+}
+
+/* 5) 텍스트 글로우 */
+h1, h2, h3, h4, p, a {
+  text-shadow: 2px 2px 8px var(--flame-glow);
+}
+.text-gradient {
+  background-image: linear-gradient(90deg, #e63946, #ff6b6b);
+}
+
+.shadow-glow-red {
+  box-shadow: 0 0 30px rgba(230,57,70,0.4);
+}
+
+/* OUR TEAM - 입체 회전 캐러셀 스타일 */
+#our-team {
+  background: #fff;
+  text-align: center;
+  }
+  
+  #our-team .about-title {
+  font-size: 3rem;
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  margin-bottom: 2rem;
+  font-family: "Arial Black", sans-serif;
+  background: linear-gradient(to bottom, #082a7b59 30%, transparent 76%);
+  -webkit-background-clip: text;
+  color: transparent;
+  }
+  
+  /* 입체 캐러셀 컨테이너 */
+  #our-team .carousel-container {
+    max-width: 900px; 
+  height: 450px;
+  margin: 0 auto;
+  position: relative;
+  perspective: 1000px;
+  overflow: visible;
+  }
+  
+  /* 입체 트랙 */
+  #our-team .carousel-track {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 1s cubic-bezier(0.645, 0.045, 0.355, 1.000);
+  will-change: transform;
+  }
+  
+  /* 카드 스타일 */
+  #our-team .card {
+  position: absolute;
+  width: 280px;
+  height: 380px;
+  background: white;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+  transition:
+    transform 1s cubic-bezier(0.645, 0.045, 0.355, 1.000),
+    opacity   1s ease;
+  will-change: transform, opacity;
+  cursor: pointer;
+  }
+  
+  #our-team .card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  }
+  
+  /* 위치에 따른 입체 효과 */
+  #our-team .card.center {
+  z-index: 10;
+  transform: scale(1.1);
+  }
+  #our-team .card.left-1,
+  #our-team .card.right-1 {
+  z-index: 5;
+  opacity: 0.9;
+  transform: scale(0.9) translateZ(-100px);
+  }
+  #our-team .card.left-2,
+  #our-team .card.right-2 {
+  z-index: 1;
+  opacity: 0.7;
+  transform: scale(0.8) translateZ(-300px);
+  }
+  #our-team .card.left-1 {
+    transform: translateX(-100px) scale(0.9) translateZ(-50px);
+  }
+  #our-team .card.right-1 {
+    transform: translateX(100px) scale(0.9) translateZ(-50px);
+  }
+  
+  /* 2단계 옆 카드 */
+  #our-team .card.left-2 {
+    transform: translateX(-100px) scale(0.8) translateZ(-50px);
+  }
+  #our-team .card.right-2 {
+    transform: translateX(100px) scale(0.8) translateZ(-50px);
+  }
+  #our-team .card.hidden {
+  opacity: 0;
+  pointer-events: none;
+  }
+  
+  /* 네비게이션 점 */
+  #our-team .dots {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 40px;
+  }
+  #our-team .dot {
+  width: 12px;
+  height: 12px;
+  background: #ccc;
+  border-radius: 50%;
+  cursor: pointer;
+  }
+  #our-team .dot.active {
+  background: #082a7b;
+  }
+  
+  /* 좌우 버튼 */
+  #our-team .nav-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: #082a7b;
+  color: white;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 20;
+  }
+  #our-team .nav-arrow.left {
+  left: 0;
+  }
+  #our-team .nav-arrow.right {
+  right: 0;
+  }
+  
+
+.facility-section {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
+  padding: 40px 20px;
+  background: #f8fafe;
+}
+
+.facility-slider {
+  flex: 1 1 500px;
+  max-width: 600px;
+  position: relative;
+}
+
+.facility-image-wrapper {
+  width: 100%;
+  max-width: 800px;
+  margin: auto;
+  height: auto;
+  overflow: hidden;
+}
+
+.facility-image-wrapper img {
+  width: 100%;
+  max-width: 800px;
+  height: auto !important;
+  object-fit: cover;
+  display: block;
+}
+
+.facility-slider .arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0, 0, 0, 0.4);
+  color: #fff;
+  border: none;
+  font-size: 24px;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+.arrow.prev { left: 10px; }
+.arrow.next { right: 10px; }
+
+@media (max-width: 768px) {
+  .facility-image-wrapper {
+    height: 250px;
+  }
+}
+
+    .facility-text {
+      flex: 1 1 400px;
+      max-width: 600px;
+    }
+    .facility-text h2 {
+      font-size: 22px;
+      color: #d63384;
+      margin-bottom: 12px;
+    }
+    .facility-text h3 {
+      font-size: 26px;
+      font-weight: 700;
+      margin-bottom: 20px;
+    }
+    .facility-text p {
+      font-size: 16px;
+      color: #333;
+      line-height: 1.6;
+    }
+      
+@media (max-width: 768px) {
+  .facility-image-wrapper {
+    height: 250px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .facility-image-wrapper img {
+    max-height: 100%;
+    width: auto;
+  }
+}
+      
+
+.rolling-gallery {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  overflow: hidden;
+  background: #f8fafe;
+  padding: 40px 10px;
+  }
+  
+  .rolling-track {
+  display: flex;
+  animation: scroll-left 25s linear infinite;
+  gap: 20px;
+  }
+  .rolling-track.reverse {
+  animation-direction: reverse;
+  animation-duration: 30s;
+  }
+  
+  /* 아래쪽 롤링 이미지 스타일 */
+  .rolling-track img {
+  width: 320px;
+  height: 240px;
+  object-fit: cover;
+  border-radius: 12px;
+  flex-shrink: 0;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: transform 0.6s ease;
+  }
+  .rolling-track img:hover {
+  transform: scale(1.05);
+  }
+  
+  @keyframes scroll-left {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+  }
+  
+  @media (max-width: 768px) {
+  .rolling-track img {
+  width: 240px;
+  height: 180px;
+  }
+  }
+
+  .carousel {
+    padding: .3em .3em 0;
+    background: rgb(240,240,240);
+    text-align: center;
+  }
+  .carousel div {
+    position: relative;
+    margin-bottom: .3em;
+    padding-top: 56.25%;
+  }
+  .carousel iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+  .carousel span {
+    display: inline-block;
+    word-spacing: 1em;  /* расстояние между картинками */
+  
+  
+  /* прокрутка миниатюр при необходимости */
+    overflow: auto;
+    white-space: nowrap;
+    word-wrap: normal;
+  
+  
+  }
+  .carousel a {
+    position: relative;
+    display: inline-block;
+    max-width: 120px;  /* максимальная ширина миниатюр */
+    width: 25%;  /* ширина миниатюр */
+    border: 1px solid blue;  /* рамка вокруг миниатюр */
+    opacity: .7;  
+    text-decoration: none;
+  }
+  .carousel a:visited,
+  .carousel a:nth-of-type(1) {
+    border-color: #555;  /* рамка вокруг миниатюр просмотренных видео */
+  }
+  .carousel a:hover { 
+    opacity: 1;
+  }
+  .carousel a:not(:active):focus {
+    pointer-events: none;
+  }
+  .carousel a::before {
+    content: "";
+    position: absolute;
+    top: 0em;
+    right: 0em;
+    bottom: 0em;
+    left: 0em;
+    background: rgba(0,0,1,.1);
+    transition: background 0s 9999999s;
+  }
+  .carousel a:nth-of-type(1)::before {
+    background: rgba(255,255,254,.7);
+  }
+  .carousel span:active a::before {
+    background: rgba(0,0,0,0);
+    transition: background 0s;
+  }
+  .carousel span:active a:active::before {
+    background: rgba(255,255,255,.7);
+    transition: background 0s;
+  }
+  .carousel img {
+    max-width: 100%;
+    vertical-align: middle;  /* убрать нижний отступ до рамки под картинкой */
+  }
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  .coss {
+    font-family: Arial;
+    padding: 25px;
+    background-color: #f5f5f5;
+    color: #808080;
+     text-align: center;
+  }
+  
+  
+
+  
+  
+  .wrapper {   min-width: 300px; margin: 1px auto; position: relative;}
+  .counter { background-color: #ffffff; padding: 20px 0; border-radius: 5px;}
+  .count-title { font-size: 40px; font-weight: normal;  margin-top: 10px; margin-bottom: 0; text-align: center; }
+  .count-text { font-size: 13px; font-weight: normal;  margin-top: 10px; margin-bottom: 0; text-align: center; }
+  .fa-2x { margin: 0 auto; float: none; display: table; color: #4ad1e5; }
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  .youtube .play {
+      background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAERklEQVR4nOWbTWhcVRTHb1IJVoxGtNCNdal2JYJReC6GWuO83PM/59yUS3FRFARdFlwYP1CfiojQWt36sRCUurRIdVFXIn41lAoVdRGrG1M01YpKrWjiYmaSl8ybZJL3cd+YA//NLObd3++eO8x79z5jSq5Gw+8kov0AP8vMR5l1BtBZQM4B8ks75wCdZdYZZj5qLZ4hov2Nht9Z9vhKKSIaB/gI4M4w62KeAO6Mte4lYOq20FxrlqqOibhHmeWbvNC9ZfDX1mLae391aN6limO/gwgvAPJbWeAZuSDingdwXTBw7/0IsyaA/Fkh+KqOkD+YNfHej1QKD+y7iVlOhgLvFqFfNJvNGyuBJ+KDAF8MDd0tgS8y64OlgSdJMsysL4cG7SOHkyQZLhTee7+d2R2rAVy/S+Jd7/32ouBHAP4gNNRGQyTHc/84NhqNywZp5rvjjnnvt21aABFeCQ+RLwAf2hQ8s7sv9OCLk6AHNgQvIrvbfzKCD76g/O6cu7lf/iER/aQGgy448pExZmhdegAPhR9sObFWH1gT3lp7DaA/5bkIgJhZPgsNmz02novj+KqeApj1ubwXWe4kdyeznAgNvTpE/HQmvKqOMeuFogTUVQSRno+iaLRLAJF7uIgL9O4ubgL8aWgB7S44mNX+35YpICUiAvS9sBLkq1WzT+NFffl6AuoiApi6NT37h6sWkBIRZGkQ8YtLgyji6e1mBYTqCEBPG2Naz+0BWQgtoGoRgCzEsd9hAN1X5BfnFZASUfrSAFQNsyZ1FJASUVpHiLinDJG8U2cBZYogkrcNs5waBAGdstbeU9zdqpw0gPwwSAI6VUxHyFlDpOcHUUBBIuYNs14aZAE5RVwyzPr3/0EAEY0TyfGNjBWQvwZ+CTSbehfAH29mrID8bET0+0EUkAd8WYDOmqJ3ecsG30yr9wqRfm6Y+a1BEFDEjHfHvWmY9ck6CygHvBVr8Xhtb4ZE5HZA3y8DvBNA1TjnrmXWf+sioMwZX5V/VHXMGGMMoKdDCxCRvRWBdzKzdHEO+EisilbPyopHYqp6S9UCAsz4iojI7hUDAtyXVQgIDd6KnOoaWNkbI6FaPSuZGyMArsi7MZoloB4zviI/Nhr3X95jltwTRQmoIfgisy5ai+me67OI7fE4nrqjrqfK1t0eby0FPRB6oGVlchL3rgnfrq19RKbVBdhV9IOSwJmfmJi4vi/4ThERitwyCxVAFqydshuCX5awhQ9KtmuIWd8IDZED/nXT77rvVVv6sHRKwjYi91poqP7Dr+Y6JJ1VSZIMA3wkPNy6bX+o8Bcm0sXMdwM8Fxo0A3xORPaWBp6uPXsmbxCRD0NDL0dOANhVCXy6iAjMcjbcrMt3RITKwdMVRdFo+y5yvkL4eWZ+zHt/ZVD4dEVRNGotpst+dZZZH8k86lqn2pIvT/eqrNfn2xuyqYPZ8mv7s8pfn/8Pybm4TIjanscAAAAASUVORK5CYII=") no-repeat center center;
+      background-size: 64px 64px;
+      position: absolute;
+      height: 100%;
+      width: 100%;
+      -webkit-transition: all 0.2s ease-out;
+      -moz-transition: all 0.2s ease-out;
+      -o-transition: all 0.2s ease-out;
+      transition: all 0.2s ease-out;
+  }
+  
+  
+  .youtube .play:hover {
+      opacity: 1;
+  }
+  
+  
+  
+  
+  .CardInside {
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+    transition: box-shadow .3s, transform .3s;
+     height: 550px;
+  }
+  
+  
+  .CardInside:hover {
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+      transform: translateY(-0.625rem);
+  }
+  
+  
+  
+  
+  .TxtContent{
+  position: relative;
+  padding:15px;
+  padding-top:10px;
+  }
+  
+  
+  .FamName{
+  float:right;
+  font-size:20px;
+  font-weight: bold;
+    border-bottom: 0.0625rem solid #ebebeb;
+  
+  
+  }
+  
+  
+  .ViCountry{
+  float:left;
+  color:#777;
+    font-size: 0.90rem;
+    font-weight: 300;
+    line-height: 2;
+    margin: 0 0 0.75rem 0;
+    padding: 0 0 0.25rem 0;
+    border-bottom: 0.125rem solid #ffa04d;
+  }
+  
+  
+  .FamJob{
+  font-size: 0.90rem;
+    font-weight: 300;
+    line-height: .5;
+    margin: 0 0 0.75rem 0;
+    padding: 0 0 0.25rem 0;
+  color:#777;
+    text-align:right;
+  }
+  
+  
+  .FamDes{
+    clear:both;
+  font-size: 0.90rem;
+    font-weight: 500;
+    line-height: 1.7;
+  text-align:center;
+  padding-top:15px;
+  }
+  
+  
+    .masheehrBtn{
+        margin: 10px auto;
+    }
+  
+  
+  button {
+    margin: 10px auto;
+    font-size: 1.0rem;
+    padding: .2rem .6rem;
+  font-family: 'Changa', sans-serif;
+    display: block;
+    background-color: #009ac9;
+    border: 1px solid transparent;
+    color: #ffffff;
+    font-weight: 300;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  
+   button:hover {
+    background-color: #ffffff;
+    color: #009ac9;
+    border-color: #009ac9;
+  }
+  
+  
+  
+  
+  .Mashaaheer{
+    margin-top:-8%;
+    z-index:1000;
+  }
+  
+  
+  
+  
+  
+  
+  
+  
+  .video-card {
+    position: relative;
+  height:50%;
+    width: 100%;
+    overflow: hidden;  
+  }
+  
+  
+   #YoutubeVids {
+      transition: all .5s ease;
+      height:100%;
+      width: 100%;
+      position: relative;
+      border-radius: 2px;
+      }
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  @media only screen and (max-width: 660px){
+  
+  
+  
+  #FamCont{
+    width:100%;
+    
+    display: block;
+  }
+  
+  
+  
+  
+  
+  .FamName{
+  float:right;
+  font-size:10px;
+  font-weight: bold;
+    border-bottom: 0.0625em solid #ebebeb;
+  
+  
+  }
+  
+  
+  .ViCountry{
+  float:left;
+  color:#777;
+    font-size: 0.90em;
+    font-weight: 300;
+    line-height: 2;
+    border-bottom: 0.125rem solid #ffa04d;
+  }
+  
+  
+  .FamJob{
+  font-size: 0.60em;
+    font-weight: 300;
+    line-height: .5;
+  color:#777;
+    text-align:right;
+  }
+  
+  
+  .FamDes{
+  font-size: 0.60em;
+  text-align:center;
+  }
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  .CardMain {
+    cursor: pointer;
+  font-family: 'Changa', sans-serif;
+    background: #fff;
+    border-radius: 2px;
+    height: auto;
+    position: flex;
+  text-align:right;
+    overflow:hidden;
+  }
+  
+  
+  
+  
+  .CardInside {
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+    transition: box-shadow .3s, transform .3s;
+     height: 450px;
+  }
+  
+  
+  .CardInside:hover {
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+      transform: translateY(-0.625rem);
+  }
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  .video-card {
+    position: relative;
+    width: 100%;
+    overflow: hidden;  
+  }
+  
+  
+   #YoutubeVids {
+      transition: all .5s ease;
+      width: 100%;
+      border-radius: 2px;
+      }
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  }

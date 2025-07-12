@@ -1,0 +1,34 @@
+{
+  "name": "jungsi",
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "next dev -p 8080",
+    "build": "next build",
+    "start": "next start",
+    "serve": "next start",
+    "export": "next export"
+  },
+  "dependencies": {
+    "aos": "^2.3.4",
+    "autoprefixer": "^10.0.0",
+    "framer-motion": "^6.5.1",
+    "next": "^15.3.4",
+    "postcss": "^8.0.0",
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0",
+    "react-hook-form": "^7.0.0",
+    "react-intersection-observer": "^9.0.0",
+    "react-tsparticles": "^2.12.2",
+    "tailwindcss": "^3.0.0",
+    "tsparticles": "^3.8.1",
+    "tsparticles-slim": "^2.12.0"
+  },
+  "devDependencies": {
+    "@types/react": "19.1.8",
+    "@typescript-eslint/eslint-plugin": "^8.36.0",
+    "@typescript-eslint/parser": "^8.36.0",
+    "eslint": "^9.31.0",
+    "eslint-config-next": "^15.3.5",
+    "typescript": "5.8.3"
+  }
+}

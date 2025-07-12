@@ -1,0 +1,487 @@
+* { margin: 0; padding: 0; }
+/* <!-- second slider -->  */
+.carousel {
+    padding: .3em .3em 0;
+    background: rgb(240,240,240);
+    text-align: center;
+  }
+  .carousel div {
+    position: relative;
+    margin-bottom: .3em;
+    padding-top: 56.25%;
+  }
+  .carousel iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+  .carousel span {
+    display: inline-block;
+    word-spacing: 1em;  /* расстояние между картинками */
+  
+  
+  /* прокрутка миниатюр при необходимости */
+    overflow: auto;
+    white-space: nowrap;
+    word-wrap: normal;
+  
+  
+  }
+  .carousel a {
+    position: relative;
+    display: inline-block;
+    max-width: 120px;  /* максимальная ширина миниатюр */
+    width: 25%;  /* ширина миниатюр */
+    border: 1px solid blue;  /* рамка вокруг миниатюр */
+    opacity: .7;  
+    text-decoration: none;
+  }
+  .carousel a:visited,
+  .carousel a:nth-of-type(1) {
+    border-color: #555;  /* рамка вокруг миниатюр просмотренных видео */
+  }
+  .carousel a:hover { 
+    opacity: 1;
+  }
+  .carousel a:not(:active):focus {
+    pointer-events: none;
+  }
+  .carousel a::before {
+    content: "";
+    position: absolute;
+    top: 0em;
+    right: 0em;
+    bottom: 0em;
+    left: 0em;
+    background: rgba(0,0,1,.1);
+    transition: background 0s 9999999s;
+  }
+  .carousel a:nth-of-type(1)::before {
+    background: rgba(255,255,254,.7);
+  }
+  .carousel span:active a::before {
+    background: rgba(0,0,0,0);
+    transition: background 0s;
+  }
+  .carousel span:active a:active::before {
+    background: rgba(255,255,255,.7);
+    transition: background 0s;
+  }
+  .carousel img {
+    max-width: 100%;
+    vertical-align: middle;  /* убрать нижний отступ до рамки под картинкой */
+  }
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  .coss {
+    font-family: Arial;
+    padding: 25px;
+    background-color: #f5f5f5;
+    color: #808080;
+     text-align: center;
+  }
+  
+  
+  /*-=-=-=-=-=-=-=-=-=-=-=- */
+  /* Column Grids */
+  /*-=-=-=-=-=-=-=-=-=-=-=- */
+  
+  
+  .col_half { width: 49%; }
+  .col_third { width: 32%; }
+  .col_fourth { width: 23.5%; }
+  .col_fifth { width: 18.4%; }
+  .col_sixth { width: 15%; }
+  .col_three_fourth { width: 74.5%;}
+  .col_twothird{ width: 66%;}
+  .col_half,
+  .col_third,
+  .col_twothird,
+  .col_fourth,
+  .col_three_fourth,
+  .col_fifth{
+  position: relative;
+  display:inline;
+  display: inline-block;
+  float: left;
+  margin-right: 2%;
+  margin-bottom: 20px;
+  }
+  .end { margin-right: 0 !important; }
+  /* Column Grids End */
+  
+  
+  .wrapper {   min-width: 300px; margin: 1px auto; position: relative;}
+  .counter { background-color: #ffffff; padding: 20px 0; border-radius: 5px;}
+  .count-title { font-size: 40px; font-weight: normal;  margin-top: 10px; margin-bottom: 0; text-align: center; }
+  .count-text { font-size: 13px; font-weight: normal;  margin-top: 10px; margin-bottom: 0; text-align: center; }
+  .fa-2x { margin: 0 auto; float: none; display: table; color: #4ad1e5; }
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  .youtube .play {
+      background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAERklEQVR4nOWbTWhcVRTHb1IJVoxGtNCNdal2JYJReC6GWuO83PM/59yUS3FRFARdFlwYP1CfiojQWt36sRCUurRIdVFXIn41lAoVdRGrG1M01YpKrWjiYmaSl8ybZJL3cd+YA//NLObd3++eO8x79z5jSq5Gw+8kov0AP8vMR5l1BtBZQM4B8ks75wCdZdYZZj5qLZ4hov2Nht9Z9vhKKSIaB/gI4M4w62KeAO6Mte4lYOq20FxrlqqOibhHmeWbvNC9ZfDX1mLae391aN6limO/gwgvAPJbWeAZuSDingdwXTBw7/0IsyaA/Fkh+KqOkD+YNfHej1QKD+y7iVlOhgLvFqFfNJvNGyuBJ+KDAF8MDd0tgS8y64OlgSdJMsysL4cG7SOHkyQZLhTee7+d2R2rAVy/S+Jd7/32ouBHAP4gNNRGQyTHc/84NhqNywZp5rvjjnnvt21aABFeCQ+RLwAf2hQ8s7sv9OCLk6AHNgQvIrvbfzKCD76g/O6cu7lf/iER/aQGgy448pExZmhdegAPhR9sObFWH1gT3lp7DaA/5bkIgJhZPgsNmz02novj+KqeApj1ubwXWe4kdyeznAgNvTpE/HQmvKqOMeuFogTUVQSRno+iaLRLAJF7uIgL9O4ubgL8aWgB7S44mNX+35YpICUiAvS9sBLkq1WzT+NFffl6AuoiApi6NT37h6sWkBIRZGkQ8YtLgyji6e1mBYTqCEBPG2Naz+0BWQgtoGoRgCzEsd9hAN1X5BfnFZASUfrSAFQNsyZ1FJASUVpHiLinDJG8U2cBZYogkrcNs5waBAGdstbeU9zdqpw0gPwwSAI6VUxHyFlDpOcHUUBBIuYNs14aZAE5RVwyzPr3/0EAEY0TyfGNjBWQvwZ+CTSbehfAH29mrID8bET0+0EUkAd8WYDOmqJ3ecsG30yr9wqRfm6Y+a1BEFDEjHfHvWmY9ck6CygHvBVr8Xhtb4ZE5HZA3y8DvBNA1TjnrmXWf+sioMwZX5V/VHXMGGMMoKdDCxCRvRWBdzKzdHEO+EisilbPyopHYqp6S9UCAsz4iojI7hUDAtyXVQgIDd6KnOoaWNkbI6FaPSuZGyMArsi7MZoloB4zviI/Nhr3X95jltwTRQmoIfgisy5ai+me67OI7fE4nrqjrqfK1t0eby0FPRB6oGVlchL3rgnfrq19RKbVBdhV9IOSwJmfmJi4vi/4ThERitwyCxVAFqydshuCX5awhQ9KtmuIWd8IDZED/nXT77rvVVv6sHRKwjYi91poqP7Dr+Y6JJ1VSZIMA3wkPNy6bX+o8Bcm0sXMdwM8Fxo0A3xORPaWBp6uPXsmbxCRD0NDL0dOANhVCXy6iAjMcjbcrMt3RITKwdMVRdFo+y5yvkL4eWZ+zHt/ZVD4dEVRNGotpst+dZZZH8k86lqn2pIvT/eqrNfn2xuyqYPZ8mv7s8pfn/8Pybm4TIjanscAAAAASUVORK5CYII=") no-repeat center center;
+      background-size: 64px 64px;
+      position: absolute;
+      height: 100%;
+      width: 100%;
+      -webkit-transition: all 0.2s ease-out;
+      -moz-transition: all 0.2s ease-out;
+      -o-transition: all 0.2s ease-out;
+      transition: all 0.2s ease-out;
+  }
+  
+  
+  .youtube .play:hover {
+      opacity: 1;
+  }
+  
+  
+  
+  
+  .CardInside {
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+    transition: box-shadow .3s, transform .3s;
+     height: 550px;
+  }
+  
+  
+  .CardInside:hover {
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+      transform: translateY(-0.625rem);
+  }
+  
+  
+  
+  
+  .TxtContent{
+  position: relative;
+  padding:15px;
+  padding-top:10px;
+  }
+  
+  
+  .FamName{
+  float:right;
+  font-size:20px;
+  font-weight: bold;
+    border-bottom: 0.0625rem solid #ebebeb;
+  
+  
+  }
+  
+  
+  .ViCountry{
+  float:left;
+  color:#777;
+    font-size: 0.90rem;
+    font-weight: 300;
+    line-height: 2;
+    margin: 0 0 0.75rem 0;
+    padding: 0 0 0.25rem 0;
+    border-bottom: 0.125rem solid #ffa04d;
+  }
+  
+  
+  .FamJob{
+  font-size: 0.90rem;
+    font-weight: 300;
+    line-height: .5;
+    margin: 0 0 0.75rem 0;
+    padding: 0 0 0.25rem 0;
+  color:#777;
+    text-align:right;
+  }
+  
+  
+  .FamDes{
+    clear:both;
+  font-size: 0.90rem;
+    font-weight: 500;
+    line-height: 1.7;
+  text-align:center;
+  padding-top:15px;
+  }
+  
+  
+    .masheehrBtn{
+        margin: 10px auto;
+    }
+  
+  
+  button {
+    margin: 10px auto;
+    font-size: 1.0rem;
+    padding: .2rem .6rem;
+  font-family: 'Changa', sans-serif;
+    display: block;
+    background-color: #009ac9;
+    border: 1px solid transparent;
+    color: #ffffff;
+    font-weight: 300;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  
+   button:hover {
+    background-color: #ffffff;
+    color: #009ac9;
+    border-color: #009ac9;
+  }
+  
+  
+  
+  
+  .Mashaaheer{
+    margin-top:-8%;
+    z-index:1000;
+  }
+  
+  
+  
+  
+  
+  
+  
+  
+  .video-card {
+    position: relative;
+  height:50%;
+    width: 100%;
+    overflow: hidden;  
+  }
+  
+  
+   #YoutubeVids {
+      transition: all .5s ease;
+      height:100%;
+      width: 100%;
+      position: relative;
+      border-radius: 2px;
+      }
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  @media only screen and (max-width: 660px){
+  
+  
+  
+  #FamCont{
+    width:100%;
+    
+    display: block;
+  }
+  
+  
+  
+  
+  
+  .FamName{
+  float:right;
+  font-size:10px;
+  font-weight: bold;
+    border-bottom: 0.0625em solid #ebebeb;
+  
+  
+  }
+  
+  
+  .ViCountry{
+  float:left;
+  color:#777;
+    font-size: 0.90em;
+    font-weight: 300;
+    line-height: 2;
+    border-bottom: 0.125rem solid #ffa04d;
+  }
+  
+  
+  .FamJob{
+  font-size: 0.60em;
+    font-weight: 300;
+    line-height: .5;
+  color:#777;
+    text-align:right;
+  }
+  
+  
+  .FamDes{
+  font-size: 0.60em;
+  text-align:center;
+  }
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  .CardMain {
+    cursor: pointer;
+  font-family: 'Changa', sans-serif;
+    background: #fff;
+    border-radius: 2px;
+    height: auto;
+    position: flex;
+  text-align:right;
+    overflow:hidden;
+  }
+  
+  
+  
+  
+  .CardInside {
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+    transition: box-shadow .3s, transform .3s;
+     height: 450px;
+  }
+  
+  
+  .CardInside:hover {
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+      transform: translateY(-0.625rem);
+  }
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  .video-card {
+    position: relative;
+    width: 100%;
+    overflow: hidden;  
+  }
+  
+  
+   #YoutubeVids {
+      transition: all .5s ease;
+      width: 100%;
+      border-radius: 2px;
+      }
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  }
