@@ -25,6 +25,7 @@ interface YouTubeGridClientProps {
 const playlists = [
   { id: '전체', label: '전체' },
   { id: 'PLs14ujgw-QQPNWh4IN28gA8T3pzzjpM6d', label: '입시정보 전달' },
+  { id: 'PLs14ujgw-QQO2Mr8eDHsRyyyS_xWtmDm1', label: '수강생 후기' },
   { id: 'PLs14ujgw-QQPNjr2HzzOBOVGilmUfNess', label: '수능 전일학원' },
   { id: 'PLs14ujgw-QQOKQZuOnYRM1IkwBLMgVfuo', label: '학생 고민상담' },
   { id: 'PLs14ujgw-QQOmVHHcnUlT_puJQ_mmYl7B', label: '재종반 강의' },
