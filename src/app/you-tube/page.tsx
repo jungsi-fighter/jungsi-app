@@ -28,7 +28,7 @@ export default async function YouTubePage() {
 
   return (
     <div className="youtube-grid-container">
-      <YouTubeGridClient videos={videos} />
+      <YouTubeGridClient initialItems={videos} />
     </div>
   );
 }
