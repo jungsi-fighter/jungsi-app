@@ -5,6 +5,5 @@ const nextConfig = {
     allowedDevOrigins: [
       'https://8080-cs-443052881276-default.cs-asia-east1-cats.cloudshell.dev'
     ],
-    output: 'export'
   };
   module.exports = nextConfig;
