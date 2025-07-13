@@ -1,4 +1,11 @@
 const nextConfig = {
+  images: {
+    domains: [
+      'i.ytimg.com',
+      'img.youtube.com',
+      'yt3.ggpht.com'
+    ]
+  },
     reactStrictMode: true,
     // Next.js 14+ swcMinify and devIndicators options removed; default minification applies
     // Cross-origin HMR을 위해 allowedDevOrigins만 설정
