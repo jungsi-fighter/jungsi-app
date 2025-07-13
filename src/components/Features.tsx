@@ -1,5 +1,9 @@
 'use client'
 import { motion } from 'framer-motion'
+
+// Suppress framer-motion typing issues by casting components to any
+const MotionDiv: any = motion.div
+const MotionH2: any = motion.h2
 import { useInView } from 'react-intersection-observer'
 
 // Suppress typing issues by casting motion.h2 to any
@@ -39,7 +43,7 @@ export default function Features() {
       </MotionH2>
       <div className="container mx-auto px-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
         {list.map((item, idx) => (
-          <motion.div
+          <MotionDiv
             key={idx}
             className="w-full bg-white rounded-lg shadow-lg p-6"
             initial={{ opacity: 0, y: 30 }}
@@ -48,7 +52,7 @@ export default function Features() {
           >
             <h3 className="text-xl font-semibold mb-2">{item.title}</h3>
             <p className="text-gray-600 whitespace-pre-line">{item.desc}</p>
-          </motion.div>
+          </MotionDiv>
         ))}
       </div>
     </section>
