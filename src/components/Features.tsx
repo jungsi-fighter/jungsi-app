@@ -4,11 +4,11 @@ import { useInView } from 'react-intersection-observer'
 
 const list = [
   {
-  title: '입시 컨설팅',
+    title: '입시 컨설팅',
     desc: '전문 매니저와 함께 정시 맞춤 학습 플랜을 설계합니다.\n목표 대학까지의 로드맵을 구체적으로 제시합니다.'
   },
   {
-  title: '실전 모의고사',
+    title: '실전 모의고사',
     desc: '주기적인 실전 테스트로 실수 없이 훈련합니다.\n해설 강의와 오답 분석을 통해 실전 감각을 강화합니다.'
   },
   {
@@ -26,7 +26,7 @@ export default function Features() {
 
   return (
     <section id="features" className="py-20 bg-gray-100">
-      <motion.h2<HTMLHeadingElement>
+      <motion.h2
         ref={ref}
         className="text-4xl font-bold text-center mb-12"
         initial={{ opacity: 0 }}
