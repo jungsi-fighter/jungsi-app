@@ -1,12 +1,9 @@
 'use client'
-import { motion, HTMLMotionProps } from 'framer-motion'
+import { motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
-import React from 'react'
 
-// Define a MotionH2 component that correctly accepts children
-// Include children in props type
-export type MotionH2Props = HTMLMotionProps<'h2'> & { children?: React.ReactNode }
-export const MotionH2: React.FC<MotionH2Props> = motion.h2
+// Suppress typing issues by casting motion.h2 to any
+const MotionH2: any = motion.h2
 
 const list = [
   {
