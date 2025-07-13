@@ -25,7 +25,9 @@ interface YouTubeGridClientProps {
 const playlists = [
   { id: '전체', label: '전체' },
   { id: 'PLs14ujgw-QQPNWh4IN28gA8T3pzzjpM6d', label: '입시정보 전달' },
-  { id: 'PLs14ujgw-QQPTjAObwq4v6GYVuNNQfOhu', label: '생기부를 부탁해' },
+  { id: 'PLs14ujgw-QQPNjr2HzzOBOVGilmUfNess', label: '수능 전일학원' },
+  { id: 'PLs14ujgw-QQOKQZuOnYRM1IkwBLMgVfuo', label: '학생 맞춤 고민상담' },
+  { id: 'PLs14ujgw-QQOmVHHcnUlT_puJQ_mmYl7B', label: '재수종합반 강의' },
   { id: 'PLs14ujgw-QQPynsauIzb6nGZXLJ_8nczQ', label: '전일권 대표' },
 ];
 
@@ -50,11 +52,11 @@ export default function YouTubeGridClient({ initialItems }: YouTubeGridClientPro
           snippet: {
             title: i.snippet.title,
             thumbnails: { high: { url: i.snippet.thumbnails.high.url } },
+            description: i.snippet.description,
             publishedAt: i.snippet.publishedAt,
           },
         }));
       }
-      // Fetch statistics
       const ids = items.map(i => i.id.videoId).join(',');
       const statsRes = await fetch(
         `https://www.googleapis.com/youtube/v3/videos?key=${apiKey}&id=${ids}&part=statistics`,
@@ -76,11 +78,12 @@ export default function YouTubeGridClient({ initialItems }: YouTubeGridClientPro
 
   return (
     <>
-      <div className="flex flex-wrap justify-center gap-2 mb-6">
+      <div className="flex space-x-3 overflow-x-auto px-4 py-3 mb-6 hide-scrollbar">
         {playlists.map(pl => (
           <button
             key={pl.id}
-            className={`px-4 py-2 rounded full ${selected === pl.id ? 'bg-blue-600 text-white' : 'bg-gray-200 text-gray-700'}`}
+            className={`flex-shrink-0 px-4 py-2 text-sm font-medium rounded-md transition-colors border-b-2 
+              ${selected === pl.id ? 'bg-blue-600 text-white border-blue-600' : 'bg-gray-100 text-gray-700 border-transparent hover:bg-gray-200'}`}
             onClick={() => setSelected(pl.id)}
           >
             {pl.label}
