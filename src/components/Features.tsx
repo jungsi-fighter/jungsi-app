@@ -4,8 +4,9 @@ import { useInView } from 'react-intersection-observer'
 import React from 'react'
 
 // Define a MotionH2 component that correctly accepts children
-type MotionH2Props = HTMLMotionProps<'h2'>
-const MotionH2 = motion.h2 as React.FC<MotionH2Props>
+// Include children in props type
+export type MotionH2Props = HTMLMotionProps<'h2'> & { children?: React.ReactNode }
+export const MotionH2: React.FC<MotionH2Props> = motion.h2
 
 const list = [
   {
