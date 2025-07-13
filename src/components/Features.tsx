@@ -1,6 +1,11 @@
 'use client'
-import { motion } from 'framer-motion'
+import { motion, HTMLMotionProps } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
+import React from 'react'
+
+// Define a MotionH2 component that correctly accepts children
+type MotionH2Props = HTMLMotionProps<'h2'>
+const MotionH2 = motion.h2 as React.FC<MotionH2Props>
 
 const list = [
   {
@@ -25,16 +30,15 @@ export default function Features() {
   const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.2 })
 
   return (
-    <section id="features" className="py-20 bg-gray-100">
-      <motion.h2
-        ref={ref}
+    <section id="features" className="py-20 bg-gray-100" ref={ref}>
+      <MotionH2
         className="text-4xl font-bold text-center mb-12"
         initial={{ opacity: 0 }}
         animate={inView ? { opacity: 1 } : {}}
         transition={{ duration: 0.8 }}
       >
         정시파이터 주요 차별점
-      </motion.h2>
+      </MotionH2>
       <div className="container mx-auto px-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
         {list.map((item, idx) => (
           <motion.div
