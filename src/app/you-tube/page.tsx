@@ -16,31 +16,32 @@ interface VideoItem {
   };
 }
 
+
 export default async function YouTubePage() {
-  const apiKey = process.env.YOUTUBE_API_KEY;
-  const channelId = process.env.YOUTUBE_CHANNEL_ID;
+  const apiKey   = process.env.YOUTUBE_API_KEY!;
+  const channelId = process.env.YOUTUBE_CHANNEL_ID!;
 
-  if (!apiKey || !channelId) {
-    return (
-      <Layout>
-        <p className="text-center text-red-500 mt-8">오류: API 키 또는 채널 ID가 설정되지 않았습니다.</p>
-      </Layout>
-    );
-  }
-
-  const res = await fetch(
-    `https://www.googleapis.com/youtube/v3/search?key=${apiKey}&channelId=${channelId}&part=snippet&order=date&maxResults=50`,
+  const vidRes = await fetch(
+    `https://www.googleapis.com/youtube/v3/search?` +
+    `key=${apiKey}&channelId=${channelId}` +
+    `&part=snippet&order=date&maxResults=50`,
     { cache: 'no-store' }
   );
-  const data = await res.json();
-  const initialItems: VideoItem[] = data.items || [];
+  if (!vidRes.ok) throw new Error('Videos 호출 실패');
+  const vidData = await vidRes.json();
+  const allItems = (vidData.items as any[]).filter(i => i.id.videoId).map(i => ({
+    id: { videoId: i.id.videoId },
+    snippet: {
+      title: i.snippet.title,
+      thumbnails: { high: { url: i.snippet.thumbnails.high.url } },
+    },
+  }));
 
   return (
-    <Layout>
-      <section id="you-tube" className="py-12 bg-gray-50">
-        <h2 className="text-3xl font-bold text-center mb-8">유튜브 영상 목록</h2>
-        <YouTubeGridClient initialItems={initialItems} />
-      </section>
-    </Layout>
+    <main className="max-w-6xl mx-auto px-4 py-12">
+      <h1 className="text-3xl font-bold mb-8">유니고TV 영상</h1>
+      <YouTubeGridClient initialItems={allItems} />
+    </main>
   );
 }
+
