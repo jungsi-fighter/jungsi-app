@@ -2,13 +2,7 @@ export const dynamic = 'force-dynamic';
 
 import React from 'react';
 import Layout from '../../components/Layout';
-import dynamicImport from 'next/dynamic';
-
-// Client-side YouTube grid component, SSR disabled
-const YouTubeGridClient = dynamicImport(
-  () => import('../../components/you-tube/YouTubeGridClient'),
-  { ssr: false }
-);
+import YouTubeGridClientWrapper from '../../components/you-tube/YouTubeGridClientWrapper.client';
 
 interface VideoItem {
   id: { videoId: string };
@@ -43,7 +37,7 @@ export default async function YouTubePage() {
     <Layout>
       <section id="you-tube" className="py-12 bg-gray-50">
         <h2 className="text-3xl font-bold text-center mb-8">유튜브 영상 목록</h2>
-        <YouTubeGridClient initialItems={initialItems} />
+        <YouTubeGridClientWrapper initialItems={initialItems} />
       </section>
     </Layout>
   );
