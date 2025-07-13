@@ -2,10 +2,10 @@ export const dynamic = 'force-dynamic';
 
 import React from 'react';
 import Layout from '../../components/Layout';
-import dynamic from 'next/dynamic';
+import dynamicImport from 'next/dynamic';
 
 // Client-side YouTube grid component, SSR disabled
-const YouTubeGridClient = dynamic(
+const YouTubeGridClient = dynamicImport(
   () => import('../../components/you-tube/YouTubeGridClient'),
   { ssr: false }
 );
