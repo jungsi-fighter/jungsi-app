@@ -78,19 +78,29 @@ export default function YouTubeGridClient({ initialItems }: YouTubeGridClientPro
 
   return (
     <>
-      <div className="flex space-x-3 overflow-x-auto px-4 py-3 mb-6 hide-scrollbar">
-        {playlists.map(pl => (
-          <button
-            key={pl.id}
-            className={`flex-shrink-0 px-4 py-2 text-sm font-medium rounded-md transition-colors border-b-2 
-              ${selected === pl.id ? 'bg-blue-600 text-white border-blue-600' : 'bg-gray-100 text-gray-700 border-transparent hover:bg-gray-200'}`}
-            onClick={() => setSelected(pl.id)}
-          >
-            {pl.label}
-          </button>
-        ))}
+      {/* 카테고리 버튼 그룹 (flex-wrap으로 줄 바꿈) */}
+      <div className="container mx-auto px-4">
+        <div className="flex flex-wrap justify-center gap-3 py-3 mb-6">
+          {playlists.map(pl => (
+            <button
+              key={pl.id}
+              className={
+                `px-4 py-2 rounded-lg transition-colors ${
+                  selected === pl.id
+                    ? 'bg-blue-600 text-white'
+                    : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
+                }`
+              }
+              onClick={() => setSelected(pl.id)}
+            >
+              {pl.label}
+            </button>
+          ))}
+        </div>
       </div>
-      <div className="container mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+
+      {/* 비디오 그리드 */}
+      <div className="container mx-auto px-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
         {videos.map(item => (
           <Link
             key={item.id.videoId}
@@ -109,7 +119,9 @@ export default function YouTubeGridClient({ initialItems }: YouTubeGridClientPro
             </div>
             <div className="p-4">
               <h3 className="text-lg font-semibold mb-2 line-clamp-2">{item.snippet.title}</h3>
-              <p className="text-sm text-gray-600 mb-2 line-clamp-3 whitespace-pre-line">{item.snippet.description}</p>
+              <p className="text-sm text-gray-600 mb-2 line-clamp-3 whitespace-pre-line">
+                {item.snippet.description}
+              </p>
               <div className="text-xs text-gray-500">
                 {item.snippet.publishedAt && new Date(item.snippet.publishedAt).toLocaleDateString('ko-KR')} • 조회수{' '}
                 {item.statistics?.viewCount?.toLocaleString()}회
