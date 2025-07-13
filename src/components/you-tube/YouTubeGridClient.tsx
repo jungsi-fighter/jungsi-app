@@ -78,19 +78,17 @@ export default function YouTubeGridClient({ initialItems }: YouTubeGridClientPro
 
   return (
     <>
-      {/* 카테고리 버튼 그룹 (flex-wrap으로 줄 바꿈) */}
+      {/* 카테고리 버튼 그룹 */}
       <div className="container mx-auto px-4">
-        <div className="flex flex-wrap justify-center gap-3 py-3 mb-6">
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-3 py-3 mb-6">
           {playlists.map(pl => (
             <button
               key={pl.id}
-              className={
-                `px-4 py-2 rounded-lg transition-colors ${
-                  selected === pl.id
-                    ? 'bg-blue-600 text-white'
-                    : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
-                }`
-              }
+              className={`px-4 py-2 rounded-lg transition-colors w-full text-center whitespace-nowrap ${
+                selected === pl.id
+                  ? 'bg-blue-600 text-white'
+                  : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
+              }`}
               onClick={() => setSelected(pl.id)}
             >
               {pl.label}
