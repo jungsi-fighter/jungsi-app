@@ -1,4 +1,5 @@
 // components/FlipBooks.jsx
+'use client'
 import { useEffect } from 'react'
 import AOS from 'aos'
 

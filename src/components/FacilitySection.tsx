@@ -1,4 +1,5 @@
 // components/FacilitySection.jsx
+'use client'
 import { useState, useEffect, useRef } from 'react'
 import AOS from 'aos'
 import 'aos/dist/aos.css'

@@ -1,6 +1,4 @@
-// pages/index.jsx
-import dynamic from 'next/dynamic'
-
+import SuccessSection from '../components/SuccessSection.client'
 import Layout from '../components/Layout'
 import Hero from '../components/Hero'
 import Features from '../components/Features'
@@ -13,12 +11,6 @@ import RollingGallery from '../components/RollingGallery'
 import ScheduleSection from '../components/ScheduleSection'
 import Programs from '../components/Programs'
 import Footer from '../components/Footer'
-
-// client-only success section to avoid hydration mismatches
-const SuccessSection = dynamic(
-  () => import('../components/SuccessSection'),
-  { ssr: false }
-)
 
 export default function Home() {
   return (
@@ -35,6 +27,7 @@ export default function Home() {
         <ScheduleSection />
         <SuccessSection />
         <Programs />
+        <Footer />
       </Layout>
     </div>
   )

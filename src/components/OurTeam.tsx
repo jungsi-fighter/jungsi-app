@@ -1,4 +1,5 @@
 // components/OurTeam.jsx
+'use client'
 import { useState, useEffect, useRef } from 'react'
 import AOS from 'aos'
 
