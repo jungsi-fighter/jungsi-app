@@ -1,12 +1,9 @@
 'use client'
 import { motion } from 'framer-motion'
+import { useInView } from 'react-intersection-observer'
 
 // Suppress framer-motion typing issues by casting components to any
 const MotionDiv: any = motion.div
-const MotionH2: any = motion.h2
-import { useInView } from 'react-intersection-observer'
-
-// Suppress typing issues by casting motion.h2 to any
 const MotionH2: any = motion.h2
 
 const list = [
