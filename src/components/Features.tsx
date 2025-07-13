@@ -1,5 +1,6 @@
-import { motion } from 'framer-motion';
-import { useInView } from 'react-intersection-observer';
+'use client'
+import { motion } from 'framer-motion'
+import { useInView } from 'react-intersection-observer'
 
 const list = [
   {
@@ -18,33 +19,36 @@ const list = [
     title: '학습관 관리',
     desc: '수업이 끝난 후에도 자습까지 자연스럽게 이어집니다.\n학습관에서의 집중 루틴으로 실력을 완성합니다.'
   }
-];
+]
 
 export default function Features() {
-  const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.2 });
+  const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.2 })
+
   return (
     <section id="features" className="py-20 bg-gray-100">
       <motion.h2
+        ref={ref}
         className="text-4xl font-bold text-center mb-12"
         initial={{ opacity: 0 }}
         animate={inView ? { opacity: 1 } : {}}
         transition={{ duration: 0.8 }}
-        ref={ref}
-      >정시파이터 주요 차별점</motion.h2>
-<div className="container mx-auto px-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
-  {list.map((item, idx) => (
-    <motion.div
-      key={idx}
-      className="w-full bg-white rounded-lg shadow-lg p-6"
+      >
+        정시파이터 주요 차별점
+      </motion.h2>
+      <div className="container mx-auto px-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
+        {list.map((item, idx) => (
+          <motion.div
+            key={idx}
+            className="w-full bg-white rounded-lg shadow-lg p-6"
             initial={{ opacity: 0, y: 30 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ delay: idx * 0.2, duration: 0.6 }}
-            >
+          >
             <h3 className="text-xl font-semibold mb-2">{item.title}</h3>
-            <p className="text-gray-600">{item.desc}</p>
+            <p className="text-gray-600 whitespace-pre-line">{item.desc}</p>
           </motion.div>
         ))}
       </div>
     </section>
-  );
+  )
 }
