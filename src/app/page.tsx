@@ -1,3 +1,4 @@
+// src/app/page.tsx
 import SuccessSection from '../components/SuccessSection.client'
 import Layout from '../components/Layout'
 import Hero from '../components/Hero'
