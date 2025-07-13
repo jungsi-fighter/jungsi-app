@@ -26,8 +26,8 @@ const playlists = [
   { id: '전체', label: '전체' },
   { id: 'PLs14ujgw-QQPNWh4IN28gA8T3pzzjpM6d', label: '입시정보 전달' },
   { id: 'PLs14ujgw-QQPNjr2HzzOBOVGilmUfNess', label: '수능 전일학원' },
-  { id: 'PLs14ujgw-QQOKQZuOnYRM1IkwBLMgVfuo', label: '학생 맞춤 고민상담' },
-  { id: 'PLs14ujgw-QQOmVHHcnUlT_puJQ_mmYl7B', label: '재수종합반 강의' },
+  { id: 'PLs14ujgw-QQOKQZuOnYRM1IkwBLMgVfuo', label: '학생 고민상담' },
+  { id: 'PLs14ujgw-QQOmVHHcnUlT_puJQ_mmYl7B', label: '재종반 강의' },
   { id: 'PLs14ujgw-QQPynsauIzb6nGZXLJ_8nczQ', label: '전일권 대표' },
 ];
 
