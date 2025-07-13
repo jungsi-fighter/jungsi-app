@@ -2,7 +2,7 @@ export const dynamic = 'force-dynamic';
 
 import React from 'react';
 import Layout from '../../components/Layout';
-import YouTubeGridClientWrapper from '../../components/you-tube/YouTubeGridClientWrapper.client';
+import YouTubeGridClientWrapper from './YouTubeGridClientWrapper.client';
 
 interface VideoItem {
   id: { videoId: string };
