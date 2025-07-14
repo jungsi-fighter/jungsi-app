@@ -50,8 +50,9 @@ export default function Header() {
               <Link href="/programs" className="block px-4 py-2">
                 프로그램
               </Link>
-            </li>
-            <li>
+              <Link href="/test" className="block px-4 py-2">
+              정시파이터 학업능력 검사
+              </Link>
               <Link href="/apply" className="block px-4 py-2">
                 신청하기
               </Link>

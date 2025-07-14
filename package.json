@@ -4,6 +4,8 @@
   "scripts": {
     "dev": "next dev -p 8080",
     "build": "next build",
+    "export": "next export",
+    "export:all": "npm run build && npm run export",
     "start": "next start",
     "serve": "next start"
   },
